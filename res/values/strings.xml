@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- general -->
+    <string name="confirm">Si</string>
+    <string name="disconfirm">No</string>
+    
+    <!-- podria borrar estas... -->
+    <string name="app_name">Bike</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- menu principal -->
+    <string name="title_activity_main_menu">Main Menu</string>
+    <string name="start_travel">Iniciar recorrido</string>
+    <string name="config">Configuraciones</string>
+    <string name="about">Acerca de</string>
+    <string name="legal_note">Notas legales</string>
+
+    <!-- recorrido -->
+    <string name="title_activity_on_the_road">On The Road</string>
+    <string name="stop_travel">Recorrido terminado</string>
+    <string name="stop_travel_confirmation">¿Estás seguro que quieres detener el recorrido?</string>
+    <string name="send_distress_msg">Mandar señal de emergencia</string>
+    <string name="send_distress_msg_confirmation">¿Estas seguro que quieres mandar la señal de emergencia?</string>
+
+    <!-- configuraciones -->
+    <string name="title_activity_configuration">ConfigurationActivity</string>
+    
+    <!-- about -->
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="about_description">
+        Impact Alert es una aplicación que manda mensajes de emergencia cuando detecta que pudiste haber tenido estado envuelto en un choque o una caida de motocicleta o bicicleta.
+    </string>
+    <string name="how_it_works">
+        Impact Alert utiliza los acelerómetros de tu dispositivo móvil. Cuando estos mandan señales de cambio de dirección y fuerza muy repentinos, se activa una alarma que si no es respondida manda el mensaje de alerta
+    </string>
+    
+    <!-- notas legales -->
+    <string name="title_activity_legal_note">LegalNoteActivity</string>
+    
+    
+
+</resources>
