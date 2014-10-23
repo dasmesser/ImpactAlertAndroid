@@ -1,7 +1,5 @@
 package com.impactalert.main;
 
-import com.example.bike.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.impactalert.ontheroad.OnTheRoadActivity;
+import com.impactalert.settings.MainConfigurationActivity;
+import com.example.bike.R;
+import com.impactalert.settings.SettingsFileManager;
 
 public class MainMenuActivity extends ActionBarActivity {
 
@@ -19,6 +23,15 @@ public class MainMenuActivity extends ActionBarActivity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_main_menu);
+		
+		if(!SettingsFileManager.isManagerConfigured())
+			SettingsFileManager.configureManager(getFilesDir().getAbsolutePath());
+		
+		if(SettingsFileManager.isFirstRun()){
+			Intent mainIntent = new Intent(MainMenuActivity.this, MainConfigurationActivity.class);
+			
+			startActivity(mainIntent);
+		}
 	}
 
 	@Override
@@ -41,7 +54,7 @@ public class MainMenuActivity extends ActionBarActivity {
 	}
 	
 	public void gotoConfiguration(View view) {
-		startActivity(new Intent(this, ConfigurationActivity.class));
+		startActivity(new Intent(this, MainConfigurationActivity.class));
 	}
 	
 	public void gotoAbout(View view) {

@@ -30,8 +30,7 @@ public class SplashScreenActivity extends ActionBarActivity {
 			
 			@Override
 			public void run(){
-				Intent mainIntent = new Intent().setClass(
-						SplashScreenActivity.this, MainMenuActivity.class);
+				Intent mainIntent = new Intent(SplashScreenActivity.this, MainMenuActivity.class);
 				startActivity(mainIntent);
 				
 				finish();

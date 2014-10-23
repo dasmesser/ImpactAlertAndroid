@@ -43,8 +43,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button_config"
-        android:layout_alignRight="@+id/button_config"
-        android:text="@string/start_travel"
-        android:onClick="gotoIniciar" />
+        android:layout_centerHorizontal="true"
+        android:onClick="gotoIniciar"
+        android:text="@string/start_travel" />
 
 </RelativeLayout>

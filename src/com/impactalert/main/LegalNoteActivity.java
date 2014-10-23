@@ -3,9 +3,11 @@ package com.impactalert.main;
 import com.example.bike.R;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -36,5 +38,9 @@ public class LegalNoteActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void gotoMainMenu(View view) {
+		startActivity(new Intent(this, MainMenuActivity.class));
 	}
 }
