@@ -47,7 +47,7 @@
             android:label="@string/title_activity_legal_note" >
         </activity>
         <activity
-            android:name="com.impactalert.settings.MainConfigurationActivity"
+            android:name="com.impactalert.settings.FirstRunActivity"
             android:label="@string/title_activity_first_run" >
         </activity>
         <activity
@@ -57,6 +57,10 @@
         <activity
             android:name="com.impactalert.settings.MessageConfigActivity"
             android:label="@string/title_activity_message_config" >
+        </activity>
+        <activity
+            android:name="com.impactalert.settings.MainConfigurationActivity"
+            android:label="@string/title_activity_main_configuration" >
         </activity>
     </application>
 

@@ -16,11 +16,11 @@ public class SettingsWrapper {
 	private ArrayList<Contact> emergencyMailContacts;
 	private String emergencyMailText;
 	
-	public static final String NAME = "name";
-	public static final String MESSAGE_CONTACTS = "messageContacts";
-	public static final String MESSAGE_TEXT = "messageText";
-	public static final String MAIL_CONTACTS = "mailContacts";
-	public static final String MAIL_TEXT = "mailText";
+	private static final String NAME = "name";
+	private static final String MESSAGE_CONTACTS = "messageContacts";
+	private static final String MESSAGE_TEXT = "messageText";
+	private static final String MAIL_CONTACTS = "mailContacts";
+	private static final String MAIL_TEXT = "mailText";
 	
 	public SettingsWrapper(String name){
 		this.name = name;

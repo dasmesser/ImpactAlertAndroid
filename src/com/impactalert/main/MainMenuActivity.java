@@ -11,9 +11,8 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.impactalert.ontheroad.OnTheRoadActivity;
-import com.impactalert.settings.MainConfigurationActivity;
+import com.impactalert.settings.*;
 import com.example.bike.R;
-import com.impactalert.settings.SettingsFileManager;
 
 public class MainMenuActivity extends ActionBarActivity {
 
@@ -29,7 +28,6 @@ public class MainMenuActivity extends ActionBarActivity {
 		
 		if(SettingsFileManager.isFirstRun()){
 			Intent mainIntent = new Intent(MainMenuActivity.this, MainConfigurationActivity.class);
-			
 			startActivity(mainIntent);
 		}
 	}

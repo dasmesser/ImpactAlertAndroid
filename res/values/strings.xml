@@ -16,7 +16,7 @@
     <!-- pantalla de primera vez -->
     <string name="first_time_presentation">¡Bienvenido a ImpactAlert! Cuando activas esta aplicación desde el menú principal, esta monitoreará por medio de los acelerómetros de tu dispositivo si pudiste haber tenido un accidente en tu motocicleta o bicicleta. Cuando esto pase, mandará un mensaje que tu definas a tus contactos de emergencia para que ellos tomen acción. Te recomendamos que te familiarices con la aplicación antes de usarla en tus viajes.</string>
     <string name="first_time_presentation_continue">Tomate un momento para realizar las configuraciones de la aplicación</string>
-    <string name="name_request">*Nombre:</string>
+    <string name="name_request">Nombre:</string>
     <string name="contacts_request">Selecciona tus contactos de emergencia</string>
     <string name="no_contacts_selected">No se han seleccionado los contactos de emergencia</string>
     <string name="contacts_selected">Contactos seleccionados</string>
@@ -26,7 +26,7 @@
     <string name="close_app">Cerrar applicacion</string>
     <string name="select_emergency_contacts">Selecciona tus contactos de emergencia</string>
     <string name="no_contacts_checked">Debes seleccionar al menos a un contacto</string>
-    
+
     <!-- pantalla de definicion del mensaje -->
     <string name="distress_message_request">¿Qué mensaje deseas que le enviemos a tus contactos?</string>
     <string name="distress_message_default_first">Mensaje de ImpactAlert. El usuario </string>
@@ -37,7 +37,7 @@
     <string name="missing_name">¿Estás seguro de que no quieres agregar tu nombre a tu mensaje de emergencia?</string>
     <string name="missing_gps">¿Estás seguro de que no quieres agregar tu ubicación GPS a tu mensaje de emergencia?</string>
     <string name="missing_both">¿Estás seguro de que no quieres agregar tu nombre y ubicación GPS a tu mensaje de emergencia?</string>
-    
+
     <!-- menu principal -->
     <string name="title_activity_main_menu">Main Menu</string>
     <string name="start_travel">Iniciar recorrido</string>
@@ -63,12 +63,13 @@
 
     <!-- notas legales -->
     <string name="legal_note_comment">Impact Alert no garantiza detectar impactos, accidentes o percances que el usuario pudiera tener. El usuario no debe depender totalmente en Impact Alert para su seguridad; usar equipo de protección, manejar de forma quiciosa, diligente y en climas apropiados es recomendado.</string>
-        
+
     <!-- necesito reubicar estas -->
     <string name="title_activity_legal_note">LegalNoteActivity</string>
     <string name="title_activity_first_run">FirstRunActivity</string>
     <string name="title_activity_contact_list">ContactListActivity</string>
     <string name="title_activity_message_config">MessageConfigActivity</string>
     <string name="back_to_main_menu">Menu Principal</string>
+    <string name="title_activity_main_configuration">MainConfigurationActivity</string>
 
 </resources>

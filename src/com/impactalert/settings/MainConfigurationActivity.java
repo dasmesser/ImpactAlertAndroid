@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.bike.R;
+import com.impactalert.main.MainMenuActivity;
 import com.impactalert.utils.Constants;
 import com.impactalert.utils.Contact;
 
@@ -26,6 +28,7 @@ public class MainConfigurationActivity extends ActionBarActivity {
 
 	public ArrayList<Contact> contacts;
 	public String name;
+	public String message;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,24 +36,45 @@ public class MainConfigurationActivity extends ActionBarActivity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
-		setContentView(R.layout.activity_first_run);
+		setContentView(R.layout.activity_main_configuration);
 		
 		Intent intent = getIntent();
 		contacts = (ArrayList<Contact>)intent.getSerializableExtra(Constants.CONTACTS);
+		
+		//if there are no contacts in the intent, this is the first time the program is run
 		if(contacts == null){
 			FirstRunDialogFragment fragment = new FirstRunDialogFragment();
 			fragment.show(getSupportFragmentManager(), "NoticeDialogFragment");
 		}
+		//if there are contacts, the continue button must be enabled and the tag's text must be setted
 		else{
 			Button b = (Button)findViewById(R.id.continue_button);
 			b.setEnabled(true);
 			((TextView)findViewById(R.id.textView3)).setText(getString(R.string.contacts_selected));
 		}
 		
-		if (intent.getExtras() != null){
+		if (intent.getExtras() != null){			
 			name = intent.getExtras().getString(Constants.NAME);
-			((EditText)findViewById(R.id.editText1)).setText(name);
+			if(name == null){
+				name = "";
+			}
+			
+			message = intent.getExtras().getString(Constants.MESSAGE);
+			if(message == null){
+				message = getText(R.string.distress_message_default_first)
+						+ " "  + Constants.INSERT_NAME
+						+ " "  + getText(R.string.distress_message_default_cont);
+			}
 		}
+		else{
+			name = "";
+			message = getText(R.string.distress_message_default_first)
+					+ " "  + Constants.INSERT_NAME
+					+ " "  + getText(R.string.distress_message_default_cont);
+		}
+		
+		((EditText)findViewById(R.id.nameText)).setText(name);
+		((EditText)findViewById(R.id.messageText)).setText(message);
 	}
 
 	@Override
@@ -72,18 +96,67 @@ public class MainConfigurationActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void gotoMessageConfig(View view) {
-		Intent intent = new Intent(this, MessageConfigActivity.class);
-		intent.putExtra(Constants.CONTACTS, contacts);
-		intent.putExtra(Constants.NAME, name);
-		startActivity(intent);
+	public void insertGPS(View view){
+		insertTag(Constants.INSERT_GPS);
+	}
+	
+	public void insertName(View view){
+		insertTag(Constants.INSERT_NAME);
+	}
+	
+	public void insertTag(String tag){
+		EditText editText = (EditText) findViewById(R.id.messageText);
+		int start = editText.getSelectionStart();
+		int end = editText.getSelectionEnd();
+		String message = editText.getText().toString();
+		
+		message = message.substring(0, start) + tag + message.substring(end, message.length());
+		editText.setText(message);
+		editText.setSelection(start + tag.length());
 	}
 	
 	public void gotoContactList(View view) {
 		Intent intent = new Intent(this, ContactListActivity.class);
-		String n = ((EditText)findViewById(R.id.editText1)).getText().toString();
-		intent.putExtra(Constants.NAME, n);
+		
+		String name = ((EditText)findViewById(R.id.nameText)).getText().toString();
+		intent.putExtra(Constants.NAME, name);
+		
+		String message = ((EditText)findViewById(R.id.messageText)).getText().toString();
+		intent.putExtra(Constants.MESSAGE, message);
+		
+		intent.putExtra(Constants.CONTACTS, contacts);
+		
 		startActivity(intent);
+	}
+	
+	public void finishConfig(View view){
+		this.message = ((EditText)findViewById(R.id.messageText)).getText().toString();
+		this.name = ((EditText)findViewById(R.id.nameText)).getText().toString();
+		ConfirmationFragment fragment = new ConfirmationFragment(contacts, name, message, this, selectFragmentString());
+		fragment.show(getSupportFragmentManager(), "ConfirmationFragment");
+	}
+	
+	public String selectFragmentString(){
+		if(message.contains(Constants.INSERT_GPS)){
+			if(message.contains(Constants.INSERT_NAME)){
+				//missing none
+				return getString(R.string.missing_none);
+			}
+			else{
+				//missing name
+				return getString(R.string.missing_name);
+			}
+		}
+		else{
+			if(message.contains(Constants.INSERT_NAME)){
+				//missing GPS
+				return getString(R.string.missing_gps);
+			}
+			else{
+				//missing both
+				return getString(R.string.missing_both);
+			}
+		}
 	}
 	
 	private class FirstRunDialogFragment extends DialogFragment{
@@ -108,6 +181,60 @@ public class MainConfigurationActivity extends ActionBarActivity {
 			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 			builder.setMessage(R.string.first_time_presentation_continue)
 				.setPositiveButton(R.string.next, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id){
+						
+					}
+				});
+			
+			return builder.create();
+		}
+	}
+
+	private static class ConfirmationFragment extends DialogFragment{
+		
+		static ArrayList<Contact> contacts = null;
+		static String name = "";
+		static String message = "";
+		static Context context = null;
+		
+		String messageToDisplay;
+		
+		public ConfirmationFragment(ArrayList<Contact> contacts,
+				String name, String message, Context context, String messageToDisplay){
+			super();
+			
+			ConfirmationFragment.contacts = contacts;
+			ConfirmationFragment.name = name;
+			ConfirmationFragment.message = message;
+			ConfirmationFragment.context = context;
+			
+			this.messageToDisplay = messageToDisplay;
+		}
+		
+		@Override
+		public Dialog onCreateDialog(Bundle savedInstanceState){
+			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+			builder.setMessage(this.messageToDisplay)
+				.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id){
+						
+						SettingsWrapper settings = new SettingsWrapper(ConfirmationFragment.name);
+						settings.setEmergencyMessageText(ConfirmationFragment.message);
+						settings.setEmergencyMessageContacts(ConfirmationFragment.contacts);
+						
+						try{
+							SettingsFileManager.writeSettingsToFile(settings);
+						}
+						catch(Exception e){
+							SettingsFileManager.configureManager(context.getFilesDir().getAbsolutePath());
+							try{SettingsFileManager.writeSettingsToFile(settings);}catch(Exception ex){}
+						}
+						
+						Intent intent = new Intent(context, MainMenuActivity.class);
+						startActivity(intent);
+					}
+				}).
+				setNegativeButton(R.string.disconfirm, new DialogInterface.OnClickListener(){
 					public void onClick(DialogInterface dialog, int id){
 						
 					}

@@ -33,76 +33,9 @@ import com.impactalert.utils.Contact;
 
 public class ContactListActivity extends ListActivity {
 
-	private class ContactSelect {
-
-		String name;
-		List<String> numbers;
-		boolean selected;
-
-		ContactSelect(String name, List<String> numbers) {
-			this.name = name;
-			this.numbers = numbers;
-			this.selected = false;
-		}
-	}
-
-	private class MyCustomAdapter extends ArrayAdapter<ContactSelect> {
-
-		private ArrayList<ContactSelect> contactList;
-
-		public MyCustomAdapter(Context context, int textViewResourceId,
-				ArrayList<ContactSelect> contactList) {
-			super(context, textViewResourceId, contactList);
-			this.contactList = new ArrayList<ContactSelect>();
-			this.contactList.addAll(contactList);
-		}
-
-		private class RowContent {
-			CheckBox checkBox;
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-
-			RowContent holder = null;
-
-			if (convertView == null) {
-				LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				convertView = vi.inflate(R.layout.activity_contact_list_aux,
-						null);
-
-				holder = new RowContent();
-				holder.checkBox = (CheckBox) convertView
-						.findViewById(R.id.checkBox1);
-				convertView.setTag(holder);
-
-				holder.checkBox.setOnClickListener(new View.OnClickListener() {
-					public void onClick(View v) {
-						CheckBox cb = (CheckBox) v;
-						ContactSelect contact = (ContactSelect) cb.getTag();
-						/*
-						 * Toast.makeText( getApplicationContext(),
-						 * "Clicked on Checkbox: " + cb.getText() + " is " +
-						 * cb.isChecked(), Toast.LENGTH_LONG) .show();
-						 */
-						contact.selected = cb.isChecked();
-					}
-				});
-			} else {
-				holder = (RowContent) convertView.getTag();
-			}
-
-			ContactSelect contact = contactList.get(position);
-			holder.checkBox.setText(contact.name);
-			holder.checkBox.setChecked(contact.selected);
-			holder.checkBox.setTag(contact);
-
-			return convertView;
-		}
-	}
-
 	String name;
 	ArrayList<ContactSelect> contacts;
+	String message;
 	MyCustomAdapter dataAdapter = null;
 
 	@Override
@@ -110,12 +43,15 @@ public class ContactListActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contact_list);
 		
-		contacts = getContactList();
-		
 		Intent intent = getIntent();
+		
+		contacts = getContactList((ArrayList<Contact>)intent.getSerializableExtra(Constants.CONTACTS));
 	    
 		name = (String)intent.getStringExtra(Constants.NAME);
 	    name = (name == null ? "" : name);
+	    
+	    message = (String)intent.getStringExtra(Constants.MESSAGE);
+	    message = (message == null ? "" : message);
 		
 		if(contacts.size() == 0){
 			setCheckButtonNoContactListener();
@@ -126,7 +62,7 @@ public class ContactListActivity extends ListActivity {
 		}
 	}
 
-	public ArrayList<ContactSelect> getContactList() {
+	public ArrayList<ContactSelect> getContactList(ArrayList<Contact> selectedContacts) {
 		ArrayList<ContactSelect> contacts = new ArrayList<ContactSelect>();
 
 		ContentResolver cr = getContentResolver();
@@ -159,7 +95,7 @@ public class ContactListActivity extends ListActivity {
 					}
 
 					if (numbers.size() > 0)
-						contacts.add(new ContactSelect(name, numbers));
+						contacts.add(new ContactSelect(name, numbers, isContactSelected(selectedContacts, name)));
 
 					pCur.close();
 				}
@@ -177,6 +113,17 @@ public class ContactListActivity extends ListActivity {
 		return contacts;
 	}
 
+	public boolean isContactSelected(ArrayList<Contact> selectedContacts, String name){
+		if(selectedContacts == null)
+			return false;
+		
+		for(Contact c : selectedContacts)
+			if(c.name.equals(name))
+				return true;
+		
+		return false;
+	}
+	
 	public void setCheckButtonNoContactListener(){
 		Button myButton = (Button) findViewById(R.id.contactsSelected);
 		myButton.setText(getString(R.string.close_app));
@@ -274,5 +221,79 @@ public class ContactListActivity extends ListActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private class ContactSelect {
+
+		String name;
+		List<String> numbers;
+		boolean selected;
+
+		ContactSelect(String name, List<String> numbers) {
+			this.name = name;
+			this.numbers = numbers;
+			this.selected = false;
+		}
+		
+		ContactSelect(String name, List<String> numbers, boolean selected){
+			this.name = name;
+			this.numbers = numbers;
+			this.selected = selected;
+		}
+	}
+
+	private class MyCustomAdapter extends ArrayAdapter<ContactSelect> {
+
+		private ArrayList<ContactSelect> contactList;
+
+		public MyCustomAdapter(Context context, int textViewResourceId,
+				ArrayList<ContactSelect> contactList) {
+			super(context, textViewResourceId, contactList);
+			this.contactList = new ArrayList<ContactSelect>();
+			this.contactList.addAll(contactList);
+		}
+
+		private class RowContent {
+			CheckBox checkBox;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+
+			RowContent holder = null;
+
+			if (convertView == null) {
+				LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				convertView = vi.inflate(R.layout.activity_contact_list_aux,
+						null);
+
+				holder = new RowContent();
+				holder.checkBox = (CheckBox) convertView
+						.findViewById(R.id.checkBox1);
+				convertView.setTag(holder);
+
+				holder.checkBox.setOnClickListener(new View.OnClickListener() {
+					public void onClick(View v) {
+						CheckBox cb = (CheckBox) v;
+						ContactSelect contact = (ContactSelect) cb.getTag();
+						/*
+						 * Toast.makeText( getApplicationContext(),
+						 * "Clicked on Checkbox: " + cb.getText() + " is " +
+						 * cb.isChecked(), Toast.LENGTH_LONG) .show();
+						 */
+						contact.selected = cb.isChecked();
+					}
+				});
+			} else {
+				holder = (RowContent) convertView.getTag();
+			}
+
+			ContactSelect contact = contactList.get(position);
+			holder.checkBox.setText(contact.name);
+			holder.checkBox.setChecked(contact.selected);
+			holder.checkBox.setTag(contact);
+
+			return convertView;
+		}
 	}
 }

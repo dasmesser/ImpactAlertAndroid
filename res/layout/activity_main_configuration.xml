@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+	<RelativeLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="518dp">
+
+	    <ImageView
+	        android:id="@+id/imageView1"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_alignBottom="@+id/continue_button"
+	        android:contentDescription="@string/app_name"
+	        android:scaleType="fitXY"
+	        android:src="@drawable/background" />
+
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/imageView1"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginTop="26dp"
+	        android:text="@string/name_request"
+	        android:paddingLeft="16dp"
+	    	android:paddingRight="16dp" />
+
+	    <Button
+	        android:id="@+id/button1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/imageView1"
+	        android:layout_below="@+id/nameText"
+	        android:layout_marginTop="21dp"
+	        android:paddingLeft="16dp"
+	    	android:paddingRight="16dp"
+	        android:onClick="gotoContactList"
+	        android:text="@string/contacts_request" />
+
+	    <TextView
+	        android:id="@+id/textView3"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/imageView1"
+	        android:layout_below="@+id/button1"
+	        android:paddingLeft="16dp"
+	    	android:paddingRight="16dp"
+	        android:text="@string/no_contacts_selected"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+	    <TextView
+	        android:id="@+id/TextView01"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/imageView1"
+	        android:layout_below="@+id/textView3"
+	        android:paddingLeft="16dp"
+	    	android:paddingRight="16dp"
+	        android:layout_marginTop="30dp"
+	        android:text="@string/distress_message_request"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+	    <Button
+	        android:id="@+id/button2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/messageText"
+	        android:layout_centerHorizontal="true"
+	        android:paddingLeft="16dp"
+	    	android:paddingRight="16dp"
+	        android:layout_marginTop="30dp"
+	        android:onClick="insertName"
+	        android:text="@string/insert_name" />
+
+	    <Button
+	        android:id="@+id/Button01"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="16dp"
+	    	android:paddingRight="16dp"
+	        android:layout_below="@+id/button2"
+	        android:layout_centerHorizontal="true"
+	        android:onClick="insertGPS"
+	        android:text="@string/insert_location" />
+
+	    <Button
+	        android:id="@+id/continue_button"
+	        android:layout_width="wrap_content"
+	        android:paddingLeft="16dp"
+	    	android:paddingRight="16dp"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/Button01"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="35dp"
+	        android:enabled="false"
+	        android:onClick="finishConfig"
+	        android:text="@string/next" />
+
+	    <EditText
+	        android:id="@+id/nameText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_below="@+id/textView1"
+	        android:layout_marginLeft="16dp"
+	        android:ems="10"
+	        android:inputType="textPersonName"
+	        android:paddingLeft="16dp"
+	        android:paddingRight="16dp" />
+
+	    <EditText
+	        android:id="@+id/messageText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/TextView01"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="16dp"
+	        android:ems="14"
+	        android:inputType="textMultiLine" />
+
+	</RelativeLayout>
+
+</ScrollView>
