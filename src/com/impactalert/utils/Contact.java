@@ -18,4 +18,29 @@ public class Contact implements Serializable{
 		this.name = name;
 		this.numbers = numbers;
 	}
+	
+	public String toString(){
+		String result = "[" + this.name + ", " + this.numbers + "]";
+		return result;
+	}
+	
+	public static Contact contactFromString(String s){
+		s = s.replace("[", "");
+		s = s.replace("]", "");
+		
+		String [] arr = s.split(", ");
+		Contact c = null;
+		
+		if(arr.length > 0){
+			String name = arr[0];
+			ArrayList<String> numbers = new ArrayList<>();
+			
+			for(int i = 1; i < arr.length; i++){
+				numbers.add(arr[i]);
+			}
+			
+			c = new Contact(name, numbers); 
+		}
+		return c;
+	}
 }

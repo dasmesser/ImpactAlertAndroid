@@ -33,11 +33,16 @@
     <string name="distress_message_default_cont"> pudo haber sufrido un accidente. Favor de contactarle y posteriormente llamar a las autoridades correspondientes</string>
     <string name="insert_location">Insertar mi ubicación</string>
     <string name="insert_name">Insertar mi nombre</string>
-    <string name="missing_none">¿Guardar este mensaje?</string>
+    <string name="missing_none">¿Guardar estas configuraciones?</string>
     <string name="missing_name">¿Estás seguro de que no quieres agregar tu nombre a tu mensaje de emergencia?</string>
     <string name="missing_gps">¿Estás seguro de que no quieres agregar tu ubicación GPS a tu mensaje de emergencia?</string>
     <string name="missing_both">¿Estás seguro de que no quieres agregar tu nombre y ubicación GPS a tu mensaje de emergencia?</string>
 
+    <!-- pantalla de emergencia -->
+    <string name="distress_in_progress">En este momento tu dispositivo esta mandando tu mensaje de emergencia a los contactos configurados. Por favor espere.</string>
+    <string name="distress_finished">Impact Alert ha terminado de mandar los mensajes definidos a los usuarios de emergencia. Esperamos que la ayuda le llegue pronto. Gracias por usar Impact Alert.</string>
+    <string name="cancel_distress">Cancelar el envio de la señal de emergencia</string>
+    
     <!-- menu principal -->
     <string name="title_activity_main_menu">Main Menu</string>
     <string name="start_travel">Iniciar recorrido</string>
@@ -71,5 +76,6 @@
     <string name="title_activity_message_config">MessageConfigActivity</string>
     <string name="back_to_main_menu">Menu Principal</string>
     <string name="title_activity_main_configuration">MainConfigurationActivity</string>
+    <string name="title_activity_distress">DistressActivity</string>
 
 </resources>

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.impactalert.ontheroad.OnTheRoadActivity;
 import com.impactalert.settings.*;
+import com.impactalert.utils.Constants;
 import com.example.bike.R;
 
 public class MainMenuActivity extends ActionBarActivity {
@@ -52,7 +53,15 @@ public class MainMenuActivity extends ActionBarActivity {
 	}
 	
 	public void gotoConfiguration(View view) {
-		startActivity(new Intent(this, MainConfigurationActivity.class));
+		Intent intent = new Intent(this, MainConfigurationActivity.class);
+		
+		if(!SettingsFileManager.isManagerConfigured())
+			SettingsFileManager.configureManager(getFilesDir().getAbsolutePath());
+		
+		SettingsWrapper settings = SettingsFileManager.getSettingsFile();
+		
+		intent.putExtra(Constants.SETTINGS, settings);
+		startActivity(intent);
 	}
 	
 	public void gotoAbout(View view) {

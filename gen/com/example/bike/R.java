@@ -1082,8 +1082,8 @@ containing a value of this type.
         public static final int splash=0x7f020059;
     }
     public static final class id {
-        public static final int Button01=0x7f050049;
-        public static final int TextView01=0x7f050046;
+        public static final int Button01=0x7f05004a;
+        public static final int TextView01=0x7f050047;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -1095,22 +1095,22 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f05004e;
+        public static final int action_settings=0x7f05004f;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int button1=0x7f050042;
-        public static final int button2=0x7f050047;
-        public static final int button_acerca_de=0x7f05004b;
-        public static final int button_config=0x7f05004a;
-        public static final int button_iniciar=0x7f05004d;
-        public static final int button_notas_legales=0x7f05004c;
-        public static final int checkBox1=0x7f050041;
+        public static final int button1=0x7f05003f;
+        public static final int button2=0x7f050048;
+        public static final int button_acerca_de=0x7f05004c;
+        public static final int button_config=0x7f05004b;
+        public static final int button_iniciar=0x7f05004e;
+        public static final int button_notas_legales=0x7f05004d;
+        public static final int checkBox1=0x7f050042;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
-        public static final int contactsSelected=0x7f050040;
-        public static final int contacts_banner=0x7f05003f;
-        public static final int continue_button=0x7f050043;
+        public static final int contactsSelected=0x7f050041;
+        public static final int contacts_banner=0x7f050040;
+        public static final int continue_button=0x7f050044;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
@@ -1127,15 +1127,16 @@ containing a value of this type.
         public static final int imageView1=0x7f05003d;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
-        public static final int messageText=0x7f050048;
+        public static final int messageText=0x7f050049;
         public static final int middle=0x7f050012;
-        public static final int nameText=0x7f050044;
+        public static final int nameText=0x7f050045;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
+        public static final int scroll_view=0x7f050043;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
@@ -1155,7 +1156,7 @@ containing a value of this type.
         public static final int tabMode=0x7f050002;
         public static final int textView1=0x7f05003e;
         public static final int textView2=0x7f05003c;
-        public static final int textView3=0x7f050045;
+        public static final int textView3=0x7f050046;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
@@ -1216,24 +1217,26 @@ containing a value of this type.
         public static final int activity_configuration=0x7f030019;
         public static final int activity_contact_list=0x7f03001a;
         public static final int activity_contact_list_aux=0x7f03001b;
-        public static final int activity_legal_note=0x7f03001c;
-        public static final int activity_main_configuration=0x7f03001d;
-        public static final int activity_main_menu=0x7f03001e;
-        public static final int activity_on_the_road=0x7f03001f;
-        public static final int activity_splash_screen=0x7f030020;
-        public static final int support_simple_spinner_dropdown_item=0x7f030021;
+        public static final int activity_distress=0x7f03001c;
+        public static final int activity_legal_note=0x7f03001d;
+        public static final int activity_main_configuration=0x7f03001e;
+        public static final int activity_main_menu=0x7f03001f;
+        public static final int activity_on_the_road=0x7f030020;
+        public static final int activity_splash_screen=0x7f030021;
+        public static final int support_simple_spinner_dropdown_item=0x7f030022;
     }
     public static final class menu {
         public static final int about=0x7f0c0000;
         public static final int configuration=0x7f0c0001;
         public static final int contact_list=0x7f0c0002;
-        public static final int first_run=0x7f0c0003;
-        public static final int legal_note=0x7f0c0004;
-        public static final int main_configuration=0x7f0c0005;
-        public static final int main_menu=0x7f0c0006;
-        public static final int message_config=0x7f0c0007;
-        public static final int recorrido=0x7f0c0008;
-        public static final int splash_screen=0x7f0c0009;
+        public static final int distress=0x7f0c0003;
+        public static final int first_run=0x7f0c0004;
+        public static final int legal_note=0x7f0c0005;
+        public static final int main_configuration=0x7f0c0006;
+        public static final int main_menu=0x7f0c0007;
+        public static final int message_config=0x7f0c0008;
+        public static final int recorrido=0x7f0c0009;
+        public static final int splash_screen=0x7f0c000a;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1276,21 +1279,26 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
-        public static final int about=0x7f0a002b;
-        public static final int about_description=0x7f0a0035;
+        public static final int about=0x7f0a002e;
+        public static final int about_description=0x7f0a0038;
         public static final int action_settings=0x7f0a0014;
         /**  podria borrar estas... 
          */
         public static final int app_name=0x7f0a0012;
-        public static final int back_to_main_menu=0x7f0a003c;
+        public static final int back_to_main_menu=0x7f0a003f;
+        public static final int cancel_distress=0x7f0a002a;
         public static final int close_app=0x7f0a001c;
-        public static final int config=0x7f0a002a;
+        public static final int config=0x7f0a002d;
         /**  general 
          */
         public static final int confirm=0x7f0a000d;
         public static final int contacts_request=0x7f0a0018;
         public static final int contacts_selected=0x7f0a001a;
         public static final int disconfirm=0x7f0a000e;
+        public static final int distress_finished=0x7f0a0029;
+        /**  pantalla de emergencia 
+         */
+        public static final int distress_in_progress=0x7f0a0028;
         public static final int distress_message_default_cont=0x7f0a0021;
         public static final int distress_message_default_first=0x7f0a0020;
         /**  pantalla de definicion del mensaje 
@@ -1302,13 +1310,13 @@ containing a value of this type.
         public static final int first_time_presentation=0x7f0a0015;
         public static final int first_time_presentation_continue=0x7f0a0016;
         public static final int hello_world=0x7f0a0013;
-        public static final int how_it_works=0x7f0a0036;
+        public static final int how_it_works=0x7f0a0039;
         public static final int insert_location=0x7f0a0022;
         public static final int insert_name=0x7f0a0023;
-        public static final int legal_note=0x7f0a002c;
+        public static final int legal_note=0x7f0a002f;
         /**  notas legales 
          */
-        public static final int legal_note_comment=0x7f0a0037;
+        public static final int legal_note_comment=0x7f0a003a;
         public static final int missing_both=0x7f0a0027;
         public static final int missing_gps=0x7f0a0026;
         public static final int missing_name=0x7f0a0025;
@@ -1321,32 +1329,33 @@ containing a value of this type.
          */
         public static final int no_data=0x7f0a001b;
         public static final int ok=0x7f0a0010;
-        public static final int on_the_road_title=0x7f0a002e;
+        public static final int on_the_road_title=0x7f0a0031;
         public static final int select_emergency_contacts=0x7f0a001d;
-        public static final int send_distress_msg=0x7f0a002f;
-        public static final int send_distress_msg_confirmation=0x7f0a0030;
-        public static final int start_travel=0x7f0a0029;
-        public static final int stop_travel=0x7f0a0031;
-        public static final int stop_travel_confirmation=0x7f0a0032;
+        public static final int send_distress_msg=0x7f0a0032;
+        public static final int send_distress_msg_confirmation=0x7f0a0033;
+        public static final int start_travel=0x7f0a002c;
+        public static final int stop_travel=0x7f0a0034;
+        public static final int stop_travel_confirmation=0x7f0a0035;
         /**  acerca de 
          */
-        public static final int title_activity_about=0x7f0a0034;
+        public static final int title_activity_about=0x7f0a0037;
         /**  configuraciones 
          */
-        public static final int title_activity_configuration=0x7f0a0033;
-        public static final int title_activity_contact_list=0x7f0a003a;
-        public static final int title_activity_first_run=0x7f0a0039;
+        public static final int title_activity_configuration=0x7f0a0036;
+        public static final int title_activity_contact_list=0x7f0a003d;
+        public static final int title_activity_distress=0x7f0a0041;
+        public static final int title_activity_first_run=0x7f0a003c;
         /**  necesito reubicar estas 
          */
-        public static final int title_activity_legal_note=0x7f0a0038;
-        public static final int title_activity_main_configuration=0x7f0a003d;
+        public static final int title_activity_legal_note=0x7f0a003b;
+        public static final int title_activity_main_configuration=0x7f0a0040;
         /**  menu principal 
          */
-        public static final int title_activity_main_menu=0x7f0a0028;
-        public static final int title_activity_message_config=0x7f0a003b;
+        public static final int title_activity_main_menu=0x7f0a002b;
+        public static final int title_activity_message_config=0x7f0a003e;
         /**  recorrido 
          */
-        public static final int title_activity_on_the_road=0x7f0a002d;
+        public static final int title_activity_on_the_road=0x7f0a0030;
     }
     public static final class style {
         /** 

@@ -74,7 +74,7 @@ public class SettingsFileManager {
 		}
 	}
 
-	public static SettingsWrapper readSettingsFile(){
+	public static SettingsWrapper getSettingsFile(){
 		File file = new File(appDir, settingsFile);
 		
 		if(!file.exists())
@@ -90,7 +90,7 @@ public class SettingsFileManager {
 
 		    while ((line = br.readLine()) != null) {
 		        text.append(line);
-		        text.append('\n');
+		        //text.append('\n');
 		    }
 		    
 		    json = new JSONObject(text.toString());
@@ -105,6 +105,6 @@ public class SettingsFileManager {
 		    try { br.close(); } catch (Exception e) { }
 		}
 		
-		return new SettingsWrapper(json);
+		return (json == null ? null : new SettingsWrapper(json));
 	}
 }

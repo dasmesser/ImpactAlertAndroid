@@ -35,10 +35,6 @@
             android:label="@string/title_activity_on_the_road" >
         </activity>
         <activity
-            android:name="com.impactalert.main.ConfigurationActivity"
-            android:label="@string/title_activity_configuration" >
-        </activity>
-        <activity
             android:name="com.impactalert.main.AboutActivity"
             android:label="@string/title_activity_about" >
         </activity>
@@ -60,7 +56,12 @@
         </activity>
         <activity
             android:name="com.impactalert.settings.MainConfigurationActivity"
-            android:label="@string/title_activity_main_configuration" >
+            android:label="@string/title_activity_main_configuration"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.impactalert.ontheroad.DistressActivity"
+            android:label="@string/title_activity_distress" >
         </activity>
     </application>
 

@@ -4,6 +4,7 @@ import com.example.bike.R;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.impactalert.main.MainMenuActivity;
 import com.impactalert.settings.SettingsWrapper;
 
 public class OnTheRoadActivity extends ActionBarActivity {
@@ -48,7 +50,7 @@ public class OnTheRoadActivity extends ActionBarActivity {
 	}
 	
 	public void stopTravel(View view){
-		StopTravelDialogFragment fragment = new StopTravelDialogFragment();
+		StopTravelDialogFragment fragment = new StopTravelDialogFragment(this);
 		fragment.show(getSupportFragmentManager(), "StopTravel");
 	}
 	
@@ -58,13 +60,20 @@ public class OnTheRoadActivity extends ActionBarActivity {
 	}
 	
 	private class StopTravelDialogFragment extends DialogFragment{
+		
+		Context context;
+		
+		public StopTravelDialogFragment(Context context){
+			this.context = context;
+		}
+		
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState){
 			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 			builder.setMessage(R.string.stop_travel_confirmation)
 				.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id){
-						
+						startActivity(new Intent(context, MainMenuActivity.class));
 					}
 				})
 				.setNegativeButton(R.string.disconfirm, new DialogInterface.OnClickListener(){

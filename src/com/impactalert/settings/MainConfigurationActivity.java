@@ -13,11 +13,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bike.R;
 import com.impactalert.main.MainMenuActivity;
@@ -38,43 +41,76 @@ public class MainConfigurationActivity extends ActionBarActivity {
 		
 		setContentView(R.layout.activity_main_configuration);
 		
+		((EditText)findViewById(R.id.messageText)).setOnFocusChangeListener(new OnFocusChangeListener() {
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+			    if(hasFocus){
+			    	ScrollView sv = (ScrollView)findViewById(R.id.scroll_view);
+			    	sv.scrollTo(0, sv.getBottom() + 40);
+			    }
+			}
+		});
+		
 		Intent intent = getIntent();
-		contacts = (ArrayList<Contact>)intent.getSerializableExtra(Constants.CONTACTS);
 		
-		//if there are no contacts in the intent, this is the first time the program is run
-		if(contacts == null){
-			FirstRunDialogFragment fragment = new FirstRunDialogFragment();
-			fragment.show(getSupportFragmentManager(), "NoticeDialogFragment");
-		}
-		//if there are contacts, the continue button must be enabled and the tag's text must be setted
-		else{
-			Button b = (Button)findViewById(R.id.continue_button);
-			b.setEnabled(true);
-			((TextView)findViewById(R.id.textView3)).setText(getString(R.string.contacts_selected));
-		}
+		SettingsWrapper settings = (SettingsWrapper)intent.getSerializableExtra(Constants.SETTINGS);
 		
-		if (intent.getExtras() != null){			
-			name = intent.getExtras().getString(Constants.NAME);
-			if(name == null){
-				name = "";
+		if(settings == null){
+		
+			contacts = (ArrayList<Contact>)intent.getSerializableExtra(Constants.CONTACTS);
+			
+			//if there are no contacts in the intent, this is the first time the program is run
+			if(contacts == null){
+				FirstRunDialogFragment fragment = new FirstRunDialogFragment();
+				fragment.show(getSupportFragmentManager(), "NoticeDialogFragment");
+			}
+			//if there are contacts, the continue button must be enabled and the tag's text must be setted
+			else{
+				Button b = (Button)findViewById(R.id.continue_button);
+				b.setEnabled(true);
+				((TextView)findViewById(R.id.textView3)).setText(getString(R.string.contacts_selected));
 			}
 			
-			message = intent.getExtras().getString(Constants.MESSAGE);
-			if(message == null){
+			if (intent.getExtras() != null){			
+				name = intent.getExtras().getString(Constants.NAME);
+				if(name == null){
+					name = "";
+				}
+				
+				message = intent.getExtras().getString(Constants.MESSAGE);
+				if(message == null){
+					message = getText(R.string.distress_message_default_first)
+							+ " "  + Constants.INSERT_NAME
+							+ " "  + getText(R.string.distress_message_default_cont);
+				}
+			}
+			else{
+				name = "";
 				message = getText(R.string.distress_message_default_first)
 						+ " "  + Constants.INSERT_NAME
 						+ " "  + getText(R.string.distress_message_default_cont);
 			}
+			
+			((EditText)findViewById(R.id.nameText)).setText(name);
+			((EditText)findViewById(R.id.messageText)).setText(message);
 		}
-		else{
-			name = "";
-			message = getText(R.string.distress_message_default_first)
-					+ " "  + Constants.INSERT_NAME
-					+ " "  + getText(R.string.distress_message_default_cont);
+		else{//the settings have been received from MainMenuActivity, just need to set everything from the info in there
+			this.contacts = settings.getEmergencyMessageContacts();
+			this.name = settings.getName();
+			this.message = settings.getEmergencyMessageText();
+			
+			if(this.contacts != null && this.contacts.size() > 0){
+				((TextView)findViewById(R.id.textView3)).setText(getString(R.string.contacts_selected));
+				
+				if(this.name != null && !"".equals(this.name) &&
+						this.message != null && !"".equals(this.message)){
+					Button b = (Button)findViewById(R.id.continue_button);
+					b.setEnabled(true);
+				}
+			}
+			((EditText)findViewById(R.id.nameText)).setText(name);
+			((EditText)findViewById(R.id.messageText)).setText(message);
 		}
-		
-		((EditText)findViewById(R.id.nameText)).setText(name);
-		((EditText)findViewById(R.id.messageText)).setText(message);
 	}
 
 	@Override
